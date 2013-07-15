@@ -4,7 +4,7 @@ module MongoidOrderable #:nodoc:
       module Enumerable #:nodoc:
         def inc attribute, value
           iterate do |doc|
-            doc.inc(attribute, value)
+            doc.inc(attribute => value)
           end
         end
       end

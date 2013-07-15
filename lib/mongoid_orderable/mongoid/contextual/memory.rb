@@ -4,7 +4,7 @@ module MongoidOrderable #:nodoc:
       module Memory #:nodoc:
         def inc attribute, value
           each do |document|
-            document.inc(attribute, value)
+            document.inc(attribute => value)
           end
         end
       end

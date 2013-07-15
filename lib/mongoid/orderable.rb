@@ -103,7 +103,7 @@ module Mongoid::Orderable
   end
 
   def remove_from_list
-    orderable_scoped.where(orderable_column.gt => orderable_position).inc(orderable_column, -1)
+    orderable_scoped.where(orderable_column.gt => orderable_position).inc(orderable_column => -1)
   end
 
 private
@@ -139,10 +139,10 @@ private
     target_position = target_position_to_position target_position
 
     unless in_list?
-      orderable_scoped.where(orderable_column.gte => target_position).inc(orderable_column, 1)
+      orderable_scoped.where(orderable_column.gte => target_position).inc(orderable_column => 1)
     else
-      orderable_scoped.where(orderable_column.gte => target_position, orderable_column.lt => orderable_position).inc(orderable_column, 1) if target_position < orderable_position
-      orderable_scoped.where(orderable_column.gt => orderable_position, orderable_column.lte => target_position).inc(orderable_column, -1) if target_position > orderable_position
+      orderable_scoped.where(orderable_column.gte => target_position, orderable_column.lt => orderable_position).inc(orderable_column => 1) if target_position < orderable_position
+      orderable_scoped.where(orderable_column.gt => orderable_position, orderable_column.lte => target_position).inc(orderable_column => -1) if target_position > orderable_position
     end
 
     self.orderable_position = target_position
